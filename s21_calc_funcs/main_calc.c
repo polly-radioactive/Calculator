@@ -11,29 +11,44 @@ double main_calc(char *str) {
   final.top = -1;
   calc_reverse_polish_notation(&stack, &final);
   res = final.value[final.top];
+  clean_stack(stack);
+  clean_stack(final);
   return res;
 }
 
-N clean_stack(N stack){
-  while (stack.top!=-1)
-  {
-    stack.value[stack.top]=0;
-    stack.type[stack.top]=0;
-    stack.priority[stack.top]=0;
+N clean_stack(N stack) {
+  while (stack.top != -1) {
+    stack.value[stack.top] = 0;
+    stack.type[stack.top] = 0;
+    stack.priority[stack.top] = 0;
     stack.top--;
   }
   return stack;
 }
 
-int main(){
-    N stack;
+int main() {
+  double x_v = 0;
+  char *str = "34.67 * atan (0.23) *( sqrt(9) + log (0.5))";
+  double result = 0;
+  N stack;
   stack.top = -1;
-  char *str = " 1 + 2 * 5 / 10 ";
   parser(str, &stack);
   stack = inverse(&stack);
-  int res = find_error(&stack);
-  printf("res: %d\n", res);
-  print_stack_type(&stack);
-  stack=clean_stack(stack);
-  print_stack_type(&stack);
+  int flag = find_error(&stack);
+  if (flag == SUCCESS) {
+    stack = convert_to_reverse_polish_notation(&stack, x_v);
+    N final;
+    final.top = -1;
+    flag = calc_reverse_polish_notation(&stack, &final);
+    if (flag == SUCCESS) {
+      result = final.value[final.top];
+      printf("result: %f \n", result);
+    } else {
+      printf("Error\n");
+    }
+    clean_stack(final);
+  } else {
+    printf("Error\n");
+  }
+  clean_stack(stack);
 }

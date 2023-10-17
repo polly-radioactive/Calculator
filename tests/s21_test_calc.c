@@ -7,6 +7,7 @@ START_TEST(parser_1) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 0);
 }
 END_TEST
@@ -18,6 +19,7 @@ START_TEST(parser_2) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -29,6 +31,7 @@ START_TEST(parser_3) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -40,6 +43,7 @@ START_TEST(parser_4) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -51,6 +55,7 @@ START_TEST(parser_5) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 0);
 }
 END_TEST
@@ -62,6 +67,7 @@ START_TEST(parser_6) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 0);
 }
 END_TEST
@@ -74,6 +80,7 @@ START_TEST(parser_7) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 0);
 }
 END_TEST
@@ -85,6 +92,7 @@ START_TEST(parser_8) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -96,6 +104,7 @@ START_TEST(parser_9) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -104,6 +113,7 @@ START_TEST(parser_10) {
   N stack;
   stack.top = MAX - 1;
   int res = isfull(&stack);
+  clean_stack(stack);
   ck_assert_int_eq(res, 1);
 }
 END_TEST
@@ -111,42 +121,42 @@ END_TEST
 START_TEST(calc_1) {
   char *str = " 1 + 2 * 5 / 10 ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, 2);
+  ck_assert_float_eq(res, 2);
 }
 END_TEST
 
 START_TEST(calc_2) {
   char *str = " (1 + 2) * 5 / 10 ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, 1.5);
+  ck_assert_float_eq(res, 1.5);
 }
 END_TEST
 
 START_TEST(calc_3) {
   char *str = " sin (1 + 2) * cos( 5 )  ^ 2 ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, 0.01135511355);
+  ck_assert_float_eq(res, 0.01135511355);
 }
 END_TEST
 
-// START_TEST(calc_4) {
-//   char *str = " 3 mod 5 * tan ( 23 + ln ( 56 )) ";
-//   double res = main_calc(str);
-//   ck_assert_uint_eq(res, -8.9980929390);
-// }
-// END_TEST
+START_TEST(calc_4) {
+  char *str = " 3 mod 5 * tan ( 23 + ln ( 56 )) ";
+  double res = main_calc(str);
+  ck_assert_float_eq(res, -8.9980929390);
+}
+END_TEST
 
 START_TEST(calc_5) {
   char *str = " asin(0.45) - acos(0.56) ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, -0.5096451877);
+  ck_assert_float_eq(res, -0.5096451877);
 }
 END_TEST
 
 START_TEST(calc_6) {
   char *str = " 34.67 * atan (0.23) *( sqrt(9) + log (0.5)) ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, 21.1539628410);
+  ck_assert_float_eq(res, 21.1539628410);
 }
 END_TEST
 
@@ -160,6 +170,8 @@ START_TEST(calc_7) {
   N final ;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
+  clean_stack(stack);
+  clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -174,6 +186,8 @@ START_TEST(calc_8) {
   N final;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
+  clean_stack(stack);
+  clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -188,6 +202,8 @@ START_TEST(calc_9) {
   N final ;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
+  clean_stack(stack);
+  clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -196,7 +212,7 @@ END_TEST
 START_TEST(calc_10) {
   char *str = " -1*7 ";
   double res = main_calc(str);
-  ck_assert_uint_eq(res, -7);
+  ck_assert_float_eq(res, -7);
 }
 END_TEST
 
@@ -212,7 +228,9 @@ START_TEST(calc_11) {
   final.top = -1;
   calc_reverse_polish_notation(&stack, &final);
   double res=final.value[final.top];
-  ck_assert_uint_eq(res, 20);
+  clean_stack(stack);
+  clean_stack(final);
+  ck_assert_float_eq(res, 20);
 }
 END_TEST
 
@@ -223,7 +241,7 @@ Suite *suite_parser(void) {
   tcase_add_test(tcase, parser_2);
   tcase_add_test(tcase, parser_3);
   tcase_add_test(tcase, parser_4);
-  // tcase_add_test(tcase, parser_5);
+  tcase_add_test(tcase, parser_5);
   tcase_add_test(tcase, parser_6);
   tcase_add_test(tcase, parser_7);
   tcase_add_test(tcase, parser_8);
@@ -239,7 +257,7 @@ Suite *suite_calc(void) {
   tcase_add_test(tcase, calc_1);
   tcase_add_test(tcase, calc_2);
   tcase_add_test(tcase, calc_3);
-  // tcase_add_test(tcase, calc_4);
+  tcase_add_test(tcase, calc_4);
   tcase_add_test(tcase, calc_5);
   tcase_add_test(tcase, calc_6);
   tcase_add_test(tcase, calc_7);

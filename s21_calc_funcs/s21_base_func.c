@@ -88,4 +88,3 @@ N inverse(N *stack) {
   }
   return tmp;
 }
-
