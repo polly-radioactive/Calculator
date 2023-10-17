@@ -63,6 +63,14 @@ int find_error(N *stack) {
       result = FAILURE;
       error(input_error);
     }
+    if (stack->type[i] == number && stack->type[i + 1] == right_bracket) {
+      result = FAILURE;
+      error(input_error);
+    }
+    if (stack->type[i + 1] == number && stack->type[i] == left_bracket) {
+      result = FAILURE;
+      error(input_error);
+    }
   }
   if (count_l != count_r) {
     result = FAILURE;
