@@ -44,5 +44,6 @@ class MainWindow : public QMainWindow {
   void on_pushButton_plot_clicked();
   void on_pushButton_clean_plot_clicked();
   void on_pushButton_x_clicked();
+  void on_pushButton_clicked();
 };
 #endif  // MAINWINDOW_H

@@ -88,3 +88,5 @@ int log_f(N *final, int result);
 // main
 double main_calc(char *str);
 N clean_stack(N stack);
+
+// credit

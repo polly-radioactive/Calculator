@@ -15,16 +15,19 @@ SOURCES += \
     ../s21_calc_funcs/s21_convert.c \
     ../s21_calc_funcs/s21_error.c \
     ../s21_calc_funcs/s21_parcer.c \
+    credit.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp
 
 HEADERS += \
     ../s21_calc_funcs/s21_calc.h \
+    credit.h \
     mainwindow.h \
     qcustomplot.h
 
 FORMS += \
+    credit.ui \
     mainwindow.ui
 
 # Default rules for deployment.

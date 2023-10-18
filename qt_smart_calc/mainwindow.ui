@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1076</width>
-    <height>391</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -966,6 +966,19 @@ QPushButton:pressed {
       <width>491</width>
       <height>351</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>380</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Кредитный калькулятор</string>
     </property>
    </widget>
   </widget>

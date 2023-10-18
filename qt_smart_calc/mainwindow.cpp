@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 
 #include "./ui_mainwindow.h"
+#include "credit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -183,4 +184,10 @@ void MainWindow::on_pushButton_x_clicked() {
   QString new_label;
   new_label = ui->result_show->text() + button->text();
   ui->result_show->setText(new_label);
+}
+
+void MainWindow::on_pushButton_clicked() {
+  Credit window;
+  window.setModal(true);
+  window.exec();
 }
