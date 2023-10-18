@@ -1,6 +1,8 @@
 #include "s21_calc.h"
 
 N convert_to_reverse_polish_notation(N *stack, double x_value) {
+  N ready;
+  ready.top = -1;
   if (find_error(stack) == SUCCESS) {
     N ready;
     ready.top = -1;
@@ -61,6 +63,6 @@ N convert_to_reverse_polish_notation(N *stack, double x_value) {
                 support.priority[support.top]);
       pop_type(&support);
     }
-    return ready;
   }
+  return ready;
 }
