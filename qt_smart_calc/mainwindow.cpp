@@ -127,9 +127,9 @@ void MainWindow::on_pushButton_plot_clicked() {
   double x_ma = (ui->max_x_value->toPlainText()).toDouble();
   double y_mi = (ui->min_y_value->toPlainText()).toDouble();
   double y_ma = (ui->max_y_value->toPlainText()).toDouble();
-  h = 0.1;
-  xBegin = -9;
-  xEnd = 9 + h;
+  h = 0.01;
+  xBegin = x_mi;
+  xEnd = x_ma;
   QString new_label;
   new_label = ui->result_show->text() + '=';
   for (X = xBegin; X <= xEnd; X += h) {
@@ -150,11 +150,18 @@ void MainWindow::on_pushButton_plot_clicked() {
         Y = final.value[final.top];
         x.push_back(X);
         y.push_back(Y);
+        final = clean_stack(final);
       }
     }
+    stack = clean_stack(stack);
   }
   ui->widget->addGraph();
   ui->widget->graph(0)->addData(x, y);
+
+  ui->widget->graph(0)->setLineStyle(QCPGraph::lsNone);
+  ui->widget->graph(0)->setScatterStyle(
+      QCPScatterStyle(QCPScatterStyle::ssCircle, 0.5));
+
   ui->widget->replot();
 }
 
