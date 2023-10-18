@@ -30,29 +30,44 @@ N clean_stack(N stack) {
   return stack;
 }
 
-int main() {
-  double x_v = 0;
-  char *str = " 2*mod2 ";
-  double result = 0;
-  N stack;
-  stack.top = -1;
-  parser(str, &stack);
-  stack = inverse(&stack);
-  int flag = find_error(&stack);
-  if (flag == SUCCESS) {
-    stack = convert_to_reverse_polish_notation(&stack, x_v);
-    N final;
-    final.top = -1;
-    flag = calc_reverse_polish_notation(&stack, &final);
-    if (flag == SUCCESS) {
-      result = final.value[final.top];
-      printf("result: %f \n", result);
-    } else {
-      printf("Error\n");
-    }
-    final = clean_stack(final);
-  } else {
-    printf("Error\n");
-  }
-  stack = clean_stack(stack);
-}
+// int main() {
+//   double x_v = 0;
+//   char *str = "2*(((3+1))) ";
+//   double result = 0;
+//   N stack;
+//   stack.top = -1;
+//   parser(str, &stack);
+//   printf("After parser\n");
+//   print_stack_value(&stack);
+//   print_stack_type(&stack);
+//   stack = inverse(&stack);
+//   // printf("After inverse\n");
+//   // print_stack_value(&stack);
+//   // print_stack_type(&stack);
+//   int flag = find_error(&stack);
+//   if (flag == SUCCESS) {
+//     stack = convert_to_reverse_polish_notation(&stack, x_v);
+//     // printf("After convert\n");
+//     // print_stack_value(&stack);
+//     // print_stack_type(&stack);
+//     N final;
+//     final.top = -1;
+//     flag = calc_reverse_polish_notation(&stack, &final);
+//     // printf("After calc\n");
+//     // print_stack_value(&stack);
+//     // print_stack_type(&stack);
+//     // printf("Final\n");
+//     // print_stack_value(&final);
+//     // print_stack_type(&final);
+//     if (flag == SUCCESS) {
+//       result = final.value[final.top];
+//       printf("result: %f \n", result);
+//     } else {
+//       printf("Error\n");
+//     }
+//     final = clean_stack(final);
+//   } else {
+//     printf("Error\n");
+//   }
+//   stack = clean_stack(stack);
+// }

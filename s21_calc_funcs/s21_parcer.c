@@ -32,7 +32,7 @@ int parser(char *str, N *stack) {
       }
       if (c == '(') {
         push_char(stack, left_bracket, -1);
-        if (str[k + 1] == '-' || str[k + 2] == '+') {
+        if (str[k + 1] == '-' || str[k + 1] == '+') {
           push_number(stack, 0);
         }
       }

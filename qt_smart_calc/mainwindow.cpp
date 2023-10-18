@@ -101,11 +101,11 @@ void MainWindow::on_pushButton_res_clicked() {
     } else {
       ui->result_show->setText("Error");
     }
-    clean_stack(final);
+    final = clean_stack(final);
   } else {
     ui->result_show->setText("Error");
   }
-  clean_stack(stack);
+  stack = clean_stack(stack);
 }
 
 void MainWindow::on_pushButton_del_clicked() {

@@ -50,10 +50,17 @@ int find_error(N *stack) {
     }
     if ((stack->type[i] == plus || stack->type[i] == minus ||
          stack->type[i] == division || stack->type[i] == mult ||
-         stack->type[i] == pow_l) &&
+         stack->type[i] == pow_l || stack->type[i] == mod ||
+         stack->type[i] == right_bracket) &&
         (stack->type[i + 1] == plus || stack->type[i + 1] == minus ||
          stack->type[i + 1] == division || stack->type[i + 1] == mult ||
-         stack->type[i + 1] == pow_l)) {
+         stack->type[i + 1] == pow_l || stack->type[i + 1] == mod)) {
+      result = FAILURE;
+      error(invalid);
+    }
+    if ((stack->type[i] == division || stack->type[i] == mult ||
+         stack->type[i] == pow_l || stack->type[i] == mod) &&
+        (stack->type[i + 1] == left_bracket)) {
       result = FAILURE;
       error(invalid);
     }

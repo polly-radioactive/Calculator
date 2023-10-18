@@ -154,6 +154,18 @@ START_TEST(parser_13) {
 }
 END_TEST
 
+START_TEST(parser_14) {
+  N stack;
+  stack.top = -1;
+  char *str = " atan(*6) ";
+  parser(str, &stack);
+  stack = inverse(&stack);
+  int res = find_error(&stack);
+  stack=clean_stack(stack);
+  ck_assert_int_eq(res, 2);
+}
+END_TEST
+
 // START_TEST(calc_1) {
 //   char *str = " 1 + 2 * 5 / 10 ";
 //   double res = main_calc(str);
@@ -270,6 +282,24 @@ END_TEST
 // }
 // END_TEST
 
+// START_TEST(calc_12) {
+//   N stack;
+//   stack.top = -1;
+//   char *str = " 2*(((3+1))) ";
+//   parser(str, &stack);
+//   stack = inverse(&stack);
+//   double x =10;
+//   stack = convert_to_reverse_polish_notation(&stack, x);
+//   N final;
+//   final.top = -1;
+//   calc_reverse_polish_notation(&stack, &final);
+//   double res=final.value[final.top];
+//   stack=clean_stack(stack);
+//   final=clean_stack(final);
+//   ck_assert_float_eq(res, 8);
+// }
+// END_TEST
+
 Suite *suite_parser(void) {
   Suite *s = suite_create("Checking s21_check_parser...");
   TCase *tcase = tcase_create("parser");
@@ -286,6 +316,7 @@ Suite *suite_parser(void) {
   tcase_add_test(tcase, parser_11);
   tcase_add_test(tcase, parser_12);
   tcase_add_test(tcase, parser_13);
+  tcase_add_test(tcase, parser_14);
   suite_add_tcase(s, tcase);
   return s;
 }
@@ -304,6 +335,7 @@ Suite *suite_parser(void) {
 //   tcase_add_test(tcase, calc_9);
 //   tcase_add_test(tcase, calc_10);
 //   tcase_add_test(tcase, calc_11);
+//   tcase_add_test(tcase, calc_12);
 //   suite_add_tcase(s, tcase);
 //   return s;
 // }

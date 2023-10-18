@@ -12,7 +12,7 @@ all: install
 tests: test gcov_report
 
 gcov_report:
-	$(CC) -o $(OUT) $(GCOVFLAGS) $(FILES) $(TESTFILES) $(CHECKFLAGS)
+	$(CC) -o exec $(GCOV_FLAGS) $(FILES) $(TESTFILES) $(CHECKFLAGS)
 	./$(OUT)
 	lcov -capture --directory . --output-file main_coverage.info
 	genhtml *.info -o ./gcov_report
