@@ -41,38 +41,38 @@ void clear(int j, char item[]) {
   }
 }
 
-int print_stack_value(N *stack) {
-  if (stack->top == -1) {
-    printf("Stack empty\n");
-  } else {
-    for (int i = 0; i <= stack->top; i++) {
-      printf(" %f |", stack->value[i]);
-    }
-    printf("\n");
-  }
-}
+// int print_stack_value(N *stack) {
+//   if (stack->top == -1) {
+//     printf("Stack empty\n");
+//   } else {
+//     for (int i = 0; i <= stack->top; i++) {
+//       printf(" %f |", stack->value[i]);
+//     }
+//     printf("\n");
+//   }
+// }
 
-int print_stack_type(N *stack) {
-  if (stack->top == -1) {
-    printf("Stack empty\n");
-  } else {
-    for (int i = 0; i <= stack->top; i++) {
-      printf(" %d |", stack->type[i]);
-    }
-    printf("\n");
-  }
-}
+// int print_stack_type(N *stack) {
+//   if (stack->top == -1) {
+//     printf("Stack empty\n");
+//   } else {
+//     for (int i = 0; i <= stack->top; i++) {
+//       printf(" %d |", stack->type[i]);
+//     }
+//     printf("\n");
+//   }
+// }
 
-int print_stack_priority(N *stack) {
-  if (stack->top == -1) {
-    printf("Stack empty\n");
-  } else {
-    for (int i = 0; i <= stack->top; i++) {
-      printf(" %d |", stack->priority[i]);
-    }
-    printf("\n");
-  }
-}
+// int print_stack_priority(N *stack) {
+//   if (stack->top == -1) {
+//     printf("Stack empty\n");
+//   } else {
+//     for (int i = 0; i <= stack->top; i++) {
+//       printf(" %d |", stack->priority[i]);
+//     }
+//     printf("\n");
+//   }
+// }
 
 N inverse(N *stack) {
   N tmp;

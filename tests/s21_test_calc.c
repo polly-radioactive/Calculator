@@ -125,7 +125,7 @@ START_TEST(parser_11) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
-  stack=clean_stack(stack);
+  stack = clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -137,7 +137,7 @@ START_TEST(parser_12) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
-  stack=clean_stack(stack);
+  stack = clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -149,7 +149,7 @@ START_TEST(parser_13) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
-  stack=clean_stack(stack);
+  stack = clean_stack(stack);
   ck_assert_int_eq(res, 0);
 }
 END_TEST
@@ -161,7 +161,7 @@ START_TEST(parser_14) {
   parser(str, &stack);
   stack = inverse(&stack);
   int res = find_error(&stack);
-  stack=clean_stack(stack);
+  stack = clean_stack(stack);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -188,9 +188,9 @@ START_TEST(calc_3) {
 END_TEST
 
 START_TEST(calc_4) {
-  char *str = " 3 mod 5 * tan ( 23 + ln ( 56 )) ";
+  char *str = " 3 mod 5 * tan ( 10000 + ln ( 56 )) ";
   double res = main_calc(str);
-  ck_assert_float_eq(res, -8.9980929390);
+  ck_assert_float_eq(res, 7.58904918161);
 }
 END_TEST
 
@@ -214,12 +214,12 @@ START_TEST(calc_7) {
   char *str = " 56 / 0 ";
   parser(str, &stack);
   stack = inverse(&stack);
-  stack = convert_to_reverse_polish_notation(&stack,0);
-  N final ;
+  stack = convert_to_reverse_polish_notation(&stack, 0);
+  N final;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
-  stack=clean_stack(stack);
-  final=clean_stack(final);
+  stack = clean_stack(stack);
+  final = clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
@@ -230,32 +230,31 @@ START_TEST(calc_8) {
   char *str = " 35mod0 ";
   parser(str, &stack);
   stack = inverse(&stack);
-  stack = convert_to_reverse_polish_notation(&stack,0);
+  stack = convert_to_reverse_polish_notation(&stack, 0);
   N final;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
-  stack=clean_stack(stack);
-  final=clean_stack(final);
+  stack = clean_stack(stack);
+  final = clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
 
 START_TEST(calc_9) {
-  N stack ;
+  N stack;
   stack.top = -1;
   char *str = " sqrt(-57) ";
   parser(str, &stack);
   stack = inverse(&stack);
-  stack = convert_to_reverse_polish_notation(&stack,0);
-  N final ;
+  stack = convert_to_reverse_polish_notation(&stack, 0);
+  N final;
   final.top = -1;
   int res = calc_reverse_polish_notation(&stack, &final);
-  stack=clean_stack(stack);
-  final=clean_stack(final);
+  stack = clean_stack(stack);
+  final = clean_stack(final);
   ck_assert_int_eq(res, 2);
 }
 END_TEST
-
 
 START_TEST(calc_10) {
   char *str = " -1*7 ";
@@ -270,14 +269,14 @@ START_TEST(calc_11) {
   char *str = " x*2 ";
   parser(str, &stack);
   stack = inverse(&stack);
-  double x =10;
+  double x = 10;
   stack = convert_to_reverse_polish_notation(&stack, x);
   N final;
   final.top = -1;
   calc_reverse_polish_notation(&stack, &final);
-  double res=final.value[final.top];
-  stack=clean_stack(stack);
-  final=clean_stack(final);
+  double res = final.value[final.top];
+  stack = clean_stack(stack);
+  final = clean_stack(final);
   ck_assert_float_eq(res, 20);
 }
 END_TEST
@@ -288,14 +287,14 @@ START_TEST(calc_12) {
   char *str = " 2*(((3+1))) ";
   parser(str, &stack);
   stack = inverse(&stack);
-  double x =10;
+  double x = 10;
   stack = convert_to_reverse_polish_notation(&stack, x);
   N final;
   final.top = -1;
   calc_reverse_polish_notation(&stack, &final);
-  double res=final.value[final.top];
-  stack=clean_stack(stack);
-  final=clean_stack(final);
+  double res = final.value[final.top];
+  stack = clean_stack(stack);
+  final = clean_stack(final);
   ck_assert_float_eq(res, 8);
 }
 END_TEST
