@@ -1,4 +1,4 @@
-CC=gcc -lm -lpthread -lcheck -lrt -lsubunit -fsanitize=address
+CC=gcc
 PKGCONFIG = $(shell which pkg-config) 
 CFLAGS=-Wall -Wextra -Werror $(shell $(PKGCONFIG) --cflags gtk4)
 FILES = s21_calc_funcs/*.c
@@ -17,6 +17,7 @@ gcov_report:
 	lcov -capture --directory . --output-file main_coverage.info
 	genhtml *.info -o ./gcov_report
 	rm -rf *.gcda *.gcno *.info exec a.out
+	open ./gcov_report/index.html
 
 test:
 	$(CC) $(FILES) $(TESTFILES) $(CHECKFLAGS)
