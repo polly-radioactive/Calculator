@@ -4,8 +4,6 @@ N convert_to_reverse_polish_notation(N *stack, double x_value) {
   N ready;
   ready.top = -1;
   if (find_error(stack) == SUCCESS) {
-    N ready;
-    ready.top = -1;
     N support;
     support.top = -1;
     if (stack->type[stack->top] == minus || stack->type[stack->top] == plus) {

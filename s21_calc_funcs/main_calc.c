@@ -32,14 +32,14 @@ N clean_stack(N stack) {
 
 // int main() {
 //   double x_v = 0;
-//   char *str = "2*(((3+1))) ";
+//   char *str = " (1 + 2) * 5 / 10 ";
 //   double result = 0;
 //   N stack;
 //   stack.top = -1;
 //   parser(str, &stack);
-//   printf("After parser\n");
-//   print_stack_value(&stack);
-//   print_stack_type(&stack);
+//   // printf("After parser\n");
+//   // print_stack_value(&stack);
+//   // print_stack_type(&stack);
 //   stack = inverse(&stack);
 //   // printf("After inverse\n");
 //   // print_stack_value(&stack);

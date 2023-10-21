@@ -59,9 +59,9 @@ void push_char(N *stack, int item, int priority);
 double pop_value(N *stack);
 int pop_type(N *stack);
 void clear(int j, char item[]);
-// int print_stack_value(N *stack);
-// int print_stack_type(N *stack);
-// int print_stack_priority(N *stack);
+int print_stack_value(N *stack);
+int print_stack_type(N *stack);
+int print_stack_priority(N *stack);
 N inverse(N *stack);
 
 // parser
