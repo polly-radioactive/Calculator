@@ -32,7 +32,7 @@ void Credit::on_pushButton_clicked() {
     ui->total_payment->setText(QString::number(total_payment, 'f', 2));
     ui->overpayment->setText(QString::number(overpayment, 'f', 2));
   }
-  if (ui->differentiated->isCheckable()) {
+  if (ui->differentiated->isChecked()) {
     double principal_r = principal;
     double monthly_payment = principal / num;
     double monthly_interest_rate = interest_rate / 100 / 12;
@@ -56,7 +56,7 @@ void Credit::on_pushButton_clicked() {
       }
     }
     char res[100];
-    sprintf(res, "%.2lf ... %.2lf", minPayment, maxPayment);
+    sprintf(res, "%.2lf ... %.2lf", maxPayment, minPayment);
     ui->monthly_payment->setText((QString)res);
     double overpayment = total_payment - principal_r;
     ui->total_payment->setText(QString::number(total_payment, 'f', 2));

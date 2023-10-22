@@ -2482,8 +2482,7 @@ QCPDataSelection &QCPDataSelection::operator-=(const QCPDataRange &other) {
 */
 int QCPDataSelection::dataPointCount() const {
   int result = 0;
-  foreach (QCPDataRange dataRange, mDataRanges)
-    result += dataRange.length();
+  foreach (QCPDataRange dataRange, mDataRanges) result += dataRange.length();
   return result;
 }
 
@@ -3953,8 +3952,7 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
       }
       // reset all section sizes to zero that are in unfinished sections (all
       // others have been set to their minimum):
-      foreach (int secId, unfinishedSections)
-        sectionSizes[secId] = 0;
+      foreach (int secId, unfinishedSections) sectionSizes[secId] = 0;
     }
   }
   if (outerIterations == sectionCount * 2)
@@ -4675,10 +4673,8 @@ QSize QCPLayoutGrid::minimumOuterSizeHint() const {
   QVector<int> minColWidths, minRowHeights;
   getMinimumRowColSizes(&minColWidths, &minRowHeights);
   QSize result(0, 0);
-  foreach (int w, minColWidths)
-    result.rwidth() += w;
-  foreach (int h, minRowHeights)
-    result.rheight() += h;
+  foreach (int w, minColWidths) result.rwidth() += w;
+  foreach (int h, minRowHeights) result.rheight() += h;
   result.rwidth() += qMax(0, columnCount() - 1) * mColumnSpacing;
   result.rheight() += qMax(0, rowCount() - 1) * mRowSpacing;
   result.rwidth() += mMargins.left() + mMargins.right();
@@ -15373,8 +15369,7 @@ QCPAxisRect *QCustomPlot::axisRectAt(const QPointF &pos) const {
 */
 QList<QCPAxis *> QCustomPlot::selectedAxes() const {
   QList<QCPAxis *> result, allAxes;
-  foreach (QCPAxisRect *rect, axisRects())
-    allAxes << rect->axes();
+  foreach (QCPAxisRect *rect, axisRects()) allAxes << rect->axes();
 
   foreach (QCPAxis *axis, allAxes) {
     if (axis->selectedParts() != QCPAxis::spNone) result.append(axis);
@@ -15487,8 +15482,7 @@ void QCustomPlot::replot(QCustomPlot::RefreshPriority refreshPriority) {
   // draw all layered objects (grid, axes, plottables, items, legend,...) into
   // their buffers:
   setupPaintBuffers();
-  foreach (QCPLayer *layer, mLayers)
-    layer->drawToPaintBuffer();
+  foreach (QCPLayer *layer, mLayers) layer->drawToPaintBuffer();
   foreach (QSharedPointer<QCPAbstractPaintBuffer> buffer, mPaintBuffers)
     buffer->setInvalidated(false);
 
@@ -15540,11 +15534,9 @@ double QCustomPlot::replotTime(bool average) const {
 */
 void QCustomPlot::rescaleAxes(bool onlyVisiblePlottables) {
   QList<QCPAxis *> allAxes;
-  foreach (QCPAxisRect *rect, axisRects())
-    allAxes << rect->axes();
+  foreach (QCPAxisRect *rect, axisRects()) allAxes << rect->axes();
 
-  foreach (QCPAxis *axis, allAxes)
-    axis->rescale(onlyVisiblePlottables);
+  foreach (QCPAxis *axis, allAxes) axis->rescale(onlyVisiblePlottables);
 }
 
 /*!
@@ -16142,8 +16134,7 @@ void QCustomPlot::draw(QCPPainter *painter) {
   drawBackground(painter);
 
   // draw all layered objects (grid, axes, plottables, items, legend,...):
-  foreach (QCPLayer *layer, mLayers)
-    layer->draw(painter);
+  foreach (QCPLayer *layer, mLayers) layer->draw(painter);
 
   /* Debug code to draw all layout element rects
   foreach (QCPLayoutElement *el, findChildren<QCPLayoutElement*>())
@@ -18076,8 +18067,7 @@ QCPAxisRect::~QCPAxisRect() {
   delete mInsetLayout;
   mInsetLayout = nullptr;
 
-  foreach (QCPAxis *axis, axes())
-    removeAxis(axis);
+  foreach (QCPAxis *axis, axes()) removeAxis(axis);
 }
 
 /*!
@@ -18476,8 +18466,7 @@ void QCPAxisRect::update(UpdatePhase phase) {
 
   switch (phase) {
     case upPreparation: {
-      foreach (QCPAxis *axis, axes())
-        axis->setupTickVectors();
+      foreach (QCPAxis *axis, axes()) axis->setupTickVectors();
       break;
     }
     case upLayout: {
